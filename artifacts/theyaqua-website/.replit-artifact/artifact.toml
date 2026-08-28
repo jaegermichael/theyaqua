@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Theyaqua Agricultural Website"
+description = "A premium responsive website for Theyaqua Pvt Ltd, helping commercial farmers and agricultural businesses understand irrigation, solar water, storage, borehole, and agricultural water engineering solutions."
+version = "1.0.0"
+id = "artifacts/theyaqua-website"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 23859
+
+[services.development]
+run = "pnpm --filter @workspace/theyaqua-website run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/theyaqua-website", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/theyaqua-website/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23859"
+BASE_PATH = "/"

@@ -1,0 +1,497 @@
+Create a premium, modern, highly interactive website for THEYAQUA (PVT) LTD, an agricultural water and irrigation engineering company.
+
+COMPANY
+Name: Theyaqua Pvt Ltd
+Industry: Agriculture, Irrigation & Water Engineering
+Core focus: Agricultural irrigation systems, water storage, solar-powered water solutions, sprinklers, boreholes and related agricultural water infrastructure.
+
+The website should transform the company's existing social-media presence into a professional company website that immediately communicates trust, technical expertise and agricultural capability.
+
+BRAND DIRECTION
+Use the company's existing logo and visual identity from the provided reference images.
+
+Primary visual language:
+- Deep agricultural blue
+- Fresh green
+- Warm yellow/gold accents
+- White / very light backgrounds
+- Dark navy for typography
+- Subtle gradients where appropriate
+
+Do NOT make the website look like a generic corporate template. It should feel like a premium African agricultural engineering company with strong technical credibility.
+
+DESIGN STYLE
+Create a visually impressive, modern website inspired by high-end technology, engineering and agricultural websites.
+
+Use:
+- Large cinematic hero sections
+- Strong typography
+- Massive headlines
+- Generous whitespace
+- Rounded cards
+- Subtle glassmorphism where appropriate
+- Layered sections
+- Soft shadows
+- Premium image treatment
+- Smooth transitions
+- Interactive hover states
+- Scroll-triggered animations
+- Subtle parallax
+- Image reveal animations
+- Animated counters
+- Staggered content entrances
+- Magnetic-style buttons where appropriate
+- Smooth page transitions
+
+The animations must feel intentional and premium, NOT excessive or distracting.
+
+DESIGN SKILLSET
+Apply these design principles throughout:
+
+1. DESIGN TASTE
+Prioritize visual hierarchy, spacing, typography, composition, contrast and consistency. Every section should feel deliberately designed rather than generated from a template.
+
+2. PREMIUM UI/UX
+Create a polished interface with excellent responsive behavior, intuitive navigation, clear CTAs and strong conversion-focused layouts.
+
+3. MOTION DESIGN
+Use Framer Motion or an equivalent animation system for:
+- Scroll reveals
+- Text animations
+- Image reveals
+- Card hover effects
+- Section transitions
+- Number counters
+- Button interactions
+- Subtle parallax effects
+
+4. VISUAL STORYTELLING
+Use the company's agricultural imagery to tell a story:
+Problem → Water → Irrigation → Technology → Agricultural productivity → Results.
+
+5. THREE.JS / WEBGL
+Use Three.js only where it genuinely improves the experience. Consider a subtle interactive water/particle effect, agricultural terrain visualization or flowing-water visual in the hero/background.
+
+Do NOT turn the website into a 3D gimmick.
+
+6. RESPONSIVE DESIGN
+The website must be exceptional on:
+- Desktop
+- Tablet
+- Mobile
+
+Mobile should not simply be a compressed desktop layout. Rework sections where necessary for mobile usability.
+
+7. MICRO-INTERACTIONS
+Add subtle interaction feedback to:
+- Buttons
+- Navigation
+- Service cards
+- Project cards
+- Images
+- Contact elements
+
+HOMEPAGE STRUCTURE
+
+NAVIGATION
+
+Create a clean sticky navigation bar.
+
+Logo:
+Theyaqua Pvt Ltd
+
+Navigation:
+- Home
+- About
+- Services
+- Solutions
+- Projects
+- Contact
+
+Primary CTA:
+"Get a Quote"
+
+On scroll, the navigation should transition from transparent/overlay to a clean solid or glass-style navigation bar.
+
+--------------------------------------------------
+
+HERO SECTION
+
+Create a powerful full-screen hero.
+
+Use a high-quality agricultural irrigation/farming image as the main visual.
+
+Headline:
+
+"Smarter Water.
+Stronger Agriculture."
+
+Supporting text:
+
+"Reliable irrigation and water engineering solutions built to help farms grow, conserve water and perform better."
+
+Primary CTA:
+"Get a Quote"
+
+Secondary CTA:
+"Explore Our Solutions"
+
+Add a subtle animated water/particle effect or flowing gradient behind the content.
+
+Include small trust indicators such as:
+
+"Water & Irrigation Engineering"
+"Agricultural Solutions"
+"Reliable Infrastructure"
+
+The hero should immediately communicate that this is an engineering company, not simply an agricultural supplier.
+
+--------------------------------------------------
+
+TRUST / INTRODUCTION
+
+Create a short section introducing the company.
+
+Heading:
+
+"Engineering Water Solutions for Agriculture"
+
+Copy:
+
+"Theyaqua Pvt Ltd provides practical water and irrigation solutions designed around the realities of modern agriculture. From irrigation systems to water storage and solar-powered solutions, we help turn water into productive agricultural infrastructure."
+
+Include a large agricultural image alongside the text.
+
+Add a small animated statistic area:
+
+"Reliable Solutions"
+"Built for Agriculture"
+"Water-Focused Engineering"
+
+--------------------------------------------------
+
+SERVICES
+
+Heading:
+
+"Everything Your Farm Needs to Move Water."
+
+Create premium service cards.
+
+Services should include:
+
+01 — Irrigation Systems
+Design and installation of efficient irrigation systems for agricultural applications.
+
+02 — Solar Water Solutions
+Solar-powered water pumping and irrigation solutions designed to reduce dependence on conventional energy.
+
+03 — Water Storage
+Durable water storage solutions including reservoirs and tanks for agricultural use.
+
+04 — Boreholes & Water Systems
+Water infrastructure solutions designed to improve reliable access to water.
+
+05 — Sprinkler Systems
+Efficient sprinkler systems suitable for agricultural fields and different crop requirements.
+
+06 — Agricultural Water Engineering
+End-to-end water engineering solutions tailored to agricultural operations.
+
+Each card should have:
+- Minimal icon
+- Number
+- Service name
+- Short description
+- "Learn More" interaction
+
+On hover, cards should subtly expand/reveal additional information.
+
+--------------------------------------------------
+
+FEATURED SOLUTION
+
+Create a visually dramatic split-screen section.
+
+Left:
+Large image showing an irrigation/sprinkler system.
+
+Right:
+Heading:
+
+"Put Every Drop to Work."
+
+Copy explaining how efficient irrigation helps farmers manage water resources while supporting healthy crops and productive farming.
+
+Include CTA:
+"Talk to an Expert"
+
+Add subtle animated water-line graphics connecting the image and content.
+
+--------------------------------------------------
+
+SOLAR + WATER SECTION
+
+Create a premium dark section focused on solar-powered water solutions.
+
+Headline:
+
+"Power Your Water With the Sun."
+
+Explain how solar energy can support water pumping and irrigation while reducing ongoing energy costs.
+
+Use agricultural/solar imagery.
+
+Add visual indicators:
+- Solar Powered
+- Lower Operating Costs
+- Sustainable
+- Built for Agriculture
+
+Use subtle animated sunlight/particle effects.
+
+--------------------------------------------------
+
+PROJECTS / WORK
+
+Create a portfolio/project showcase using the company's actual uploaded imagery.
+
+Display projects such as:
+- Agricultural irrigation installations
+- Drip irrigation
+- Sprinkler systems
+- Water storage tanks
+- Solar water infrastructure
+- Agricultural fields
+
+Use a modern masonry/grid layout.
+
+Each project should have:
+Project category
+Short description
+Image
+
+Include smooth image hover animations.
+
+Add CTA:
+"View Our Projects"
+
+IMPORTANT:
+Do not invent fake client names, project values, statistics or locations.
+
+--------------------------------------------------
+
+WHY THEYAQUA
+
+Create a premium section titled:
+
+"Built Around What Agriculture Actually Needs."
+
+Use 4 key advantages:
+
+01
+Practical Engineering
+
+02
+Agriculture-Focused Solutions
+
+03
+Reliable Infrastructure
+
+04
+Water-Efficient Systems
+
+Use large typography and subtle scroll-based animation.
+
+--------------------------------------------------
+
+PROCESS
+
+Create a clean 4-step process:
+
+01 — Understand
+Understand the farm, water requirements and operational needs.
+
+02 — Design
+Develop the appropriate irrigation or water solution.
+
+03 — Install
+Implement the system professionally.
+
+04 — Support
+Provide guidance and support to keep the system performing.
+
+Use a horizontal timeline on desktop and vertical timeline on mobile.
+
+--------------------------------------------------
+
+ABOUT SECTION
+
+Create a strong About section.
+
+Heading:
+
+"Water Is More Than a Resource.
+It's Infrastructure."
+
+Introduce Theyaqua Pvt Ltd as an agricultural water and engineering company focused on practical solutions that help farmers access, manage and use water effectively.
+
+Include the company logo and a large image.
+
+Do not fabricate founding dates, certifications, awards or company statistics.
+
+--------------------------------------------------
+
+CTA SECTION
+
+Create a high-impact CTA before the footer.
+
+Headline:
+
+"Let's Build a Better Water System for Your Farm."
+
+Supporting text:
+
+"Tell us what you're working with and we'll help you find the right solution."
+
+Buttons:
+"Request a Quote"
+"Chat on WhatsApp"
+
+Make WhatsApp highly visible because it is likely to be one of the company's primary customer communication channels.
+
+--------------------------------------------------
+
+CONTACT
+
+Create a premium contact section.
+
+Include:
+- Name
+- Phone
+- Email
+- Location
+- Project type
+- Message
+
+CTA:
+"Send Enquiry"
+
+Also include a direct WhatsApp CTA.
+
+Add a map only if an actual company location is available. Do not invent an address.
+
+--------------------------------------------------
+
+FOOTER
+
+Include:
+
+Theyaqua Pvt Ltd
+Agricultural & Water Engineering
+
+Navigation links
+Services
+Solutions
+Projects
+Contact
+
+Social links:
+Facebook
+WhatsApp
+
+Copyright:
+© 2026 Theyaqua Pvt Ltd. All rights reserved.
+
+TECHNICAL REQUIREMENTS
+
+Build using:
+- React
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- Lucide React icons
+
+Use reusable components.
+
+Structure the code cleanly with:
+components/
+sections/
+pages/
+assets/
+
+Optimize:
+- Performance
+- SEO
+- Accessibility
+- Mobile responsiveness
+- Image loading
+- Core Web Vitals
+
+Use semantic HTML.
+
+Add proper:
+- Page title
+- Meta description
+- Open Graph metadata
+- Image alt text
+- Heading hierarchy
+
+Use lazy loading for below-the-fold imagery.
+
+IMAGE DIRECTION
+
+Prioritize the actual company images provided in the reference materials.
+
+Use agricultural imagery featuring:
+- Irrigation systems
+- Sprinklers
+- Water tanks
+- Agricultural fields
+- Solar-powered water infrastructure
+- Crops
+
+Images should be presented professionally using:
+- Rounded corners
+- Cropping
+- Layering
+- Overlapping compositions
+- Subtle gradients
+- Hover zoom effects
+
+Do not use cheesy stock-photo compositions.
+
+OVERALL EXPERIENCE
+
+The final website should feel like a company that could confidently approach:
+- Commercial farmers
+- Agricultural businesses
+- Estates
+- Irrigation projects
+- Large-scale farming operations
+
+It should NOT feel like:
+- A basic WordPress template
+- A generic plumbing website
+- A simple agricultural blog
+- An over-animated AI-generated website
+
+Think:
+
+"Premium agricultural engineering + modern technology + African practicality."
+
+The first 5 seconds of the website should make a visitor understand:
+
+THEYAQUA
+→ Water
+→ Irrigation
+→ Agriculture
+→ Engineering
+→ Reliable solutions
+
+Make the website visually memorable while keeping conversion and clarity as the priority.
+
+install and use these skills:
+https://github.com/anthropics/skills/blob/main/skills/frontend-design/SKILL.md
+npx shadcn@latest add @bklit/area-chart
+npx skills add Leonxlnx/taste-skill
