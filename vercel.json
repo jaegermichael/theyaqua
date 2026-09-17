@@ -1,4 +1,4 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "PORT=5173 BASE_PATH=/ pnpm --filter @workspace/theyaqua-website build && mkdir -p public && cp -r artifacts/theyaqua-website/dist/public/. public/"
+  "buildCommand": "PORT=5173 BASE_PATH=/ pnpm --filter @workspace/theyaqua-website build"
 }
