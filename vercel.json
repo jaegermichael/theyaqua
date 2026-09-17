@@ -1,0 +1,6 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "vite",
+  "buildCommand": "PORT=5173 BASE_PATH=/ pnpm --filter @workspace/theyaqua-website build",
+  "outputDirectory": "artifacts/theyaqua-website/dist/public"
+}
