@@ -6,17 +6,22 @@ import {
   Check,
   ChevronDown,
   Droplets,
+  GraduationCap,
   HardHat,
   Menu,
   MoveRight,
+  Orbit,
   Phone,
   Pin,
   Send,
   Sprout,
-  SunMedium,
+  Warehouse,
   Waves,
   X,
 } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
+
+import { getImage, getImages, heroImage } from './data/gallery';
 
 const navItems = [
   { label: 'Capabilities', href: '#capabilities' },
@@ -25,58 +30,83 @@ const navItems = [
   { label: 'Contact', href: '#contact' },
 ];
 
-const services = [
+interface Capability {
+  number: string;
+  icon: LucideIcon;
+  title: string;
+  slug: string;
+  description: string;
+  details: string[];
+}
+
+const capabilities: Capability[] = [
   {
     number: '01',
-    icon: Droplets,
-    title: 'Irrigation systems',
-    description: 'Water delivery designed around your crops, soil, pressure and season — from source to root zone.',
-    details: ['Drip and micro irrigation', 'Sprinkler systems', 'Filtration and fertigation'],
-    image: 'https://images.pexels.com/photos/772803/pexels-photo-772803.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    icon: Orbit,
+    title: 'Centre pivots',
+    slug: 'centre-pivots',
+    description: 'Full-field, automated coverage for large areas — precise, uniform water application without guesswork.',
+    details: ['Automated pivot systems', 'Uniform field coverage', 'Pressure and timing control'],
   },
   {
     number: '02',
-    icon: Waves,
-    title: 'Water source & storage',
-    description: 'Build confidence into the source: boreholes, abstraction, tanks and reservoirs that hold up to demand.',
-    details: ['Borehole equipment', 'Storage tanks and reservoirs', 'Pumping and distribution'],
-    image: 'https://images.pexels.com/photos/161853/gallon-barrel-water-liquid-161853.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    icon: Droplets,
+    title: 'Drip irrigation',
+    slug: 'drip-irrigation',
+    description: 'Water delivered drop by drop to the root zone, so every plant gets exactly what it needs.',
+    details: ['Drip and micro irrigation', 'Filtration and fertigation', 'Efficient water use'],
   },
   {
     number: '03',
-    icon: SunMedium,
-    title: 'Solar pumping',
-    description: 'Turn open sky into dependable water movement with solar pumping systems sized for the work.',
-    details: ['Solar pump sizing', 'Array and controller setup', 'Hybrid-ready systems'],
-    image: 'https://images.pexels.com/photos/433308/pexels-photo-433308.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    icon: Warehouse,
+    title: 'Greenhouses',
+    slug: 'greenhouses',
+    description: 'Protected growing environments that extend your season and shield the crop from the elements.',
+    details: ['Structure and covering', 'Internal climate control', 'Year-round production'],
   },
   {
     number: '04',
     icon: HardHat,
-    title: 'Agricultural infrastructure',
-    description: 'The practical connections between source, field and future expansion — made clear and buildable.',
-    details: ['Pipework and manifolds', 'Pump houses and controls', 'Maintenance planning'],
-    image: 'https://images.pexels.com/photos/1595108/pexels-photo-1595108.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    title: 'Steel pipe works',
+    slug: 'steel-pipe-works',
+    description: 'Fabrication and installation of the pipework that carries your water reliably from source to field.',
+    details: ['Pipe fabrication', 'Manifolds and connections', 'Field installation'],
+  },
+  {
+    number: '05',
+    icon: Waves,
+    title: 'Storage reservoirs',
+    slug: 'storage-reservoirs',
+    description: 'Secure storage that holds up to demand, so water is there when the crop calls for it.',
+    details: ['Reservoirs and tanks', 'Lining and sealing', 'Pumping and distribution'],
+  },
+  {
+    number: '06',
+    icon: GraduationCap,
+    title: 'Farmers training',
+    slug: 'farmers-training',
+    description: 'Hands-on training that leaves your team confident to run, maintain and improve the system.',
+    details: ['Operator training', 'Maintenance know-how', 'Water-smart practices'],
   },
 ];
 
 const projects = [
   {
     title: 'From source to crop',
-    type: 'Water systems',
-    image: 'https://images.pexels.com/photos/2165688/pexels-photo-2165688.jpeg?auto=compress&cs=tinysrgb&w=1400',
+    type: 'Drip irrigation',
+    image: getImage('drip-irrigation', 2),
     tint: 'from-[#0e3340]/10 to-[#0e3340]/80',
   },
   {
     title: 'A field with a rhythm',
-    type: 'Irrigation',
-    image: 'https://images.pexels.com/photos/1595104/pexels-photo-1595104.jpeg?auto=compress&cs=tinysrgb&w=1400',
+    type: 'Centre pivots',
+    image: getImage('centre-pivots', 1),
     tint: 'from-[#2b6547]/10 to-[#2b6547]/80',
   },
   {
-    title: 'Power where it matters',
-    type: 'Solar pumping',
-    image: 'https://images.pexels.com/photos/433308/pexels-photo-433308.jpeg?auto=compress&cs=tinysrgb&w=1400',
+    title: 'Protected growing',
+    type: 'Greenhouses',
+    image: getImage('greenhouses', 6),
     tint: 'from-[#a77a2d]/10 to-[#193d4a]/80',
   },
 ];
@@ -119,7 +149,7 @@ function App() {
   const heroImageY = useTransform(scrollY, [0, 700], [0, 90]);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeService, setActiveService] = useState(0);
+  const [activeCapability, setActiveCapability] = useState(0);
   const [submitted, setSubmitted] = useState(false);
   const [formError, setFormError] = useState('');
 
@@ -131,7 +161,7 @@ function App() {
 
   useEffect(() => {
     document.title = 'Theyaqua | Smarter Water. Stronger Agriculture.';
-    const description = 'Theyaqua engineers practical water, irrigation, solar pumping and agricultural infrastructure systems for working farms.';
+    const description = 'Theyaqua engineers centre pivots, drip irrigation, greenhouses, steel pipe works and water storage systems for working farms.';
     const setMeta = (attribute: 'name' | 'property', key: string, content: string) => {
       let tag = document.head.querySelector(`meta[${attribute}="${key}"]`);
       if (!tag) {
@@ -216,7 +246,7 @@ function App() {
             </motion.div>
           </div>
           <div className="relative min-h-[420px] overflow-hidden lg:min-h-0">
-            <motion.img style={{ y: heroImageY }} src="https://images.pexels.com/photos/1595108/pexels-photo-1595108.jpeg?auto=compress&cs=tinysrgb&w=1800" alt="Agricultural field rows extending toward a tree line at sunrise" className="absolute inset-0 h-[calc(100%+90px)] w-full object-cover object-center" />
+            <motion.img style={{ y: heroImageY }} src={heroImage} alt="Drip irrigation lines running through a green field" className="absolute inset-0 h-[calc(100%+90px)] w-full object-cover object-center" />
             <div className="absolute inset-0 bg-gradient-to-r from-[#d8f5e8] via-transparent to-[#10384a]/10 lg:from-[#d8f5e8] lg:via-transparent" />
             <div className="absolute bottom-7 left-5 right-5 flex items-end justify-between text-[#f7f3e8] sm:left-8 sm:right-8">
               <div className="font-mono-custom text-[10px] uppercase tracking-[.18em] text-[#f7f3e8]/80">Field note / 06:18</div>
@@ -263,23 +293,37 @@ function App() {
             </div>
             <p className="max-w-[285px] text-sm leading-6 text-[#10384a]/72">One connected view of the source, the power, the pipe and the field.</p>
           </div>
-          <div className="mt-16 grid gap-3 lg:grid-cols-2">
-            {services.map((service, index) => {
-              const Icon = service.icon;
-              const active = index === activeService;
+          <div className="mt-16 grid gap-4 lg:grid-cols-2">
+            {capabilities.map((capability, index) => {
+              const Icon = capability.icon;
+              const images = getImages(capability.slug);
+              const active = index === activeCapability;
               return (
-                <motion.article layout key={service.number} className={`group overflow-hidden border border-[#10384a]/15 ${active ? 'bg-[#10384a] text-[#fffdf4]' : 'bg-[#fffdf4]/70 text-[#10384a]'} transition-colors duration-500`} data-testid={`card-service-${service.number}`}>
-                  <button type="button" onClick={() => setActiveService(active ? -1 : index)} className="flex w-full items-start justify-between gap-6 p-6 text-left sm:p-8" aria-expanded={active} data-testid={`button-service-${service.number}`}>
-                    <span className="flex items-start gap-5">
-                      <span className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full ${active ? 'bg-[#129b68] text-[#fffdf4]' : 'bg-[#c8f5df] text-[#129b68]'}`}><Icon size={21} /></span>
-                      <span><span className={`font-mono-custom block text-[10px] tracking-[.2em] ${active ? 'text-[#ffbf3d]' : 'text-[#129b68]'}`}>{service.number} / SYSTEM</span><span className="mt-3 block font-display text-2xl font-bold tracking-[-.02em] sm:text-3xl">{service.title}</span></span>
-                    </span>
-                    <span className={`mt-1 shrink-0 rounded-full border p-2 transition-transform ${active ? 'rotate-180 border-[#fffdf4]/30' : 'border-[#10384a]/20'}`}><ChevronDown size={16} /></span>
+                <motion.article layout key={capability.number} className={`group overflow-hidden border ${active ? 'border-[#10384a] bg-[#10384a] text-[#fffdf4]' : 'border-[#10384a]/15 bg-[#fffdf4]/70 text-[#10384a]'} transition-colors duration-500`} data-testid={`card-capability-${capability.number}`}>
+                  <button type="button" onClick={() => setActiveCapability(active ? -1 : index)} className="block w-full text-left" aria-expanded={active} data-testid={`button-capability-${capability.number}`}>
+                    <div className="relative h-48 overflow-hidden sm:h-56">
+                      <img src={images[0]} alt={`${capability.title} — Theyaqua agricultural systems`} className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#10384a]/85 via-[#10384a]/15 to-transparent" />
+                      <div className="absolute left-4 top-4 flex items-center gap-3 sm:left-5 sm:top-5">
+                        <span className="flex h-11 w-11 items-center justify-center rounded-full bg-[#129b68] text-[#fffdf4]"><Icon size={20} /></span>
+                        <span className="font-mono-custom text-[10px] uppercase tracking-[.2em] text-[#fffdf4]/90">{capability.number} / SYSTEM</span>
+                      </div>
+                      <span className="absolute right-4 top-4 rounded-full bg-[#fffdf4]/15 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[.14em] text-[#fffdf4] backdrop-blur-sm sm:right-5 sm:top-5">{images.length} photos</span>
+                      <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between sm:bottom-5 sm:left-5 sm:right-5">
+                        <span className="font-display text-2xl font-bold tracking-[-.02em] text-[#fffdf4] sm:text-3xl">{capability.title}</span>
+                        <span className={`shrink-0 rounded-full border border-[#fffdf4]/40 p-2 text-[#fffdf4] transition-transform ${active ? 'rotate-180' : ''}`}><ChevronDown size={16} /></span>
+                      </div>
+                    </div>
                   </button>
                   {active && (
-                    <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} className="grid gap-6 border-t border-[#fffdf4]/15 px-6 pb-7 sm:grid-cols-[1fr_180px] sm:px-8">
-                      <div className="pt-5"><p className="max-w-[440px] text-sm leading-6 text-[#fffdf4]/78">{service.description}</p><ul className="mt-5 grid gap-2 text-xs text-[#fffdf4]/85">{service.details.map((detail) => <li key={detail} className="flex items-center gap-2"><Check size={13} className="text-[#ffbf3d]" />{detail}</li>)}</ul></div>
-                      <img src={service.image} alt={`${service.title} in an agricultural setting`} className="h-32 w-full object-cover grayscale-[.25] sm:mt-5 sm:h-36" />
+                    <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} className="border-t border-[#fffdf4]/15 px-5 pb-7 pt-5 sm:px-7 sm:pb-8">
+                      <p className="max-w-[460px] text-sm leading-6 text-[#fffdf4]/78">{capability.description}</p>
+                      <ul className="mt-5 grid gap-2 text-xs text-[#fffdf4]/85 sm:grid-cols-3">{capability.details.map((detail) => <li key={detail} className="flex items-center gap-2"><Check size={13} className="shrink-0 text-[#ffbf3d]" />{detail}</li>)}</ul>
+                      <div className="mt-6 grid grid-cols-2 gap-2 sm:grid-cols-3">
+                        {images.map((src, imageIndex) => (
+                          <img key={src} src={src} alt={`${capability.title} — photo ${imageIndex + 1}`} className="aspect-[4/3] w-full object-cover" loading="lazy" />
+                        ))}
+                      </div>
                     </motion.div>
                   )}
                 </motion.article>
@@ -294,18 +338,18 @@ function App() {
         <div className="absolute -right-4 top-24 h-48 w-48 rounded-full border border-[#ffbf3d]/30 sm:h-72 sm:w-72" />
         <div className="relative mx-auto grid max-w-[1380px] items-center gap-16 lg:grid-cols-[1fr_.9fr]">
           <div className="reveal">
-            <SectionLabel light>Energy / an open resource</SectionLabel>
-            <h2 className="mt-8 max-w-[760px] font-display text-[clamp(3.1rem,7vw,7.4rem)] font-bold leading-[.9] tracking-[-.04em]">Power your water<br /><span className="text-[#ffbf3d]">with the sun.</span></h2>
-            <p className="mt-8 max-w-[500px] text-lg leading-8 text-[#fffdf4]/82">Solar pumping can bring a different kind of steadiness to your water system. We help you understand where it fits — and where it does not.</p>
-            <a href="#contact" className="group mt-9 inline-flex items-center gap-3 border-b border-[#ffbf3d] pb-3 text-sm font-bold" data-testid="link-solar-contact">Explore solar pumping <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" /></a>
+            <SectionLabel light>Protected growing / greenhouses</SectionLabel>
+            <h2 className="mt-8 max-w-[760px] font-display text-[clamp(3.1rem,7vw,7.4rem)] font-bold leading-[.9] tracking-[-.04em]">Grow under cover,<br /><span className="text-[#ffbf3d]">with certainty.</span></h2>
+            <p className="mt-8 max-w-[500px] text-lg leading-8 text-[#fffdf4]/82">A greenhouse turns a season into a system — protecting the crop while you control the climate, the water and the timing inside.</p>
+            <a href="#capabilities" className="group mt-9 inline-flex items-center gap-3 border-b border-[#ffbf3d] pb-3 text-sm font-bold" data-testid="link-greenhouses">Explore greenhouses <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" /></a>
           </div>
           <div className="reveal relative mx-auto w-full max-w-[540px]">
-              <div className="aspect-[4/5] overflow-hidden bg-[#10384a]">
-              <img src="https://images.pexels.com/photos/2800832/pexels-photo-2800832.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Solar panels under a bright open sky" className="h-full w-full object-cover opacity-80 mix-blend-luminosity" />
+            <div className="aspect-[4/5] overflow-hidden bg-[#10384a]">
+              <img src={getImage('greenhouses', 4)} alt="Greenhouse interior with protected crops" className="h-full w-full object-cover opacity-90" />
             </div>
             <div className="absolute -bottom-5 -left-4 bg-[#ffbf3d] p-5 text-[#10384a] sm:-left-7 sm:p-7">
-              <SunMedium size={25} strokeWidth={1.5} />
-              <div className="mt-7 font-mono-custom text-[10px] uppercase tracking-[.18em]">sun / source / system</div>
+              <Warehouse size={25} strokeWidth={1.5} />
+              <div className="mt-7 font-mono-custom text-[10px] uppercase tracking-[.18em]">cover / climate / crop</div>
             </div>
           </div>
         </div>
@@ -374,7 +418,7 @@ function App() {
                   <label className="text-xs font-bold">Your name<input name="name" type="text" placeholder="Name" className="mt-2 w-full border-0 border-b border-[#10384a]/25 bg-transparent px-0 py-3 text-sm outline-none transition-colors placeholder:text-[#10384a]/40 focus:border-[#129b68]" data-testid="input-name" /></label>
                   <label className="text-xs font-bold">Email address<input name="email" type="email" placeholder="you@farm.com" className="mt-2 w-full border-0 border-b border-[#10384a]/25 bg-transparent px-0 py-3 text-sm outline-none transition-colors placeholder:text-[#10384a]/40 focus:border-[#129b68]" data-testid="input-email" /></label>
                 </div>
-                <label className="mt-7 block text-xs font-bold">What are you working on?<textarea name="message" rows={4} placeholder="A new irrigation system, a water source, solar pumping..." className="mt-2 w-full resize-none border-0 border-b border-[#10384a]/25 bg-transparent px-0 py-3 text-sm outline-none transition-colors placeholder:text-[#10384a]/40 focus:border-[#129b68]" data-testid="input-message" /></label>
+                <label className="mt-7 block text-xs font-bold">What are you working on?<textarea name="message" rows={4} placeholder="A new irrigation system, a greenhouse, water storage, farmer training..." className="mt-2 w-full resize-none border-0 border-b border-[#10384a]/25 bg-transparent px-0 py-3 text-sm outline-none transition-colors placeholder:text-[#10384a]/40 focus:border-[#129b68]" data-testid="input-message" /></label>
                 {formError && <p className="mt-5 text-xs font-semibold text-[#a64034]" role="alert" data-testid="status-form-error">{formError}</p>}
                 <button type="submit" className="group mt-9 inline-flex items-center gap-4 rounded-full bg-[#10384a] px-6 py-4 text-sm font-bold text-[#fffdf4] transition-colors hover:bg-[#129b68]" data-testid="button-submit-contact">Send your note <MoveRight size={17} className="transition-transform group-hover:translate-x-1" /></button>
                 <p className="mt-5 text-[11px] leading-5 text-[#10384a]/55">This is a local enquiry form for demonstration. No message is sent until a backend connection is configured.</p>
