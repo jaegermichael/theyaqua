@@ -1,4 +1,4 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "PORT=5173 BASE_PATH=/ pnpm --filter @workspace/theyaqua-website build"
+  "buildCommand": "pnpm run typecheck:libs && PORT=5173 BASE_PATH=/ pnpm --filter @workspace/theyaqua-website build"
 }
