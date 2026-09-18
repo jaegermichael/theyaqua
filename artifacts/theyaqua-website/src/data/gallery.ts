@@ -7,11 +7,13 @@ export interface GalleryCategory {
 /**
  * Loads every gallery image eagerly so Vite can resolve, hash and
  * serve them with the correct base path in every environment.
+ * Include both JPG and JPEG variants to support the provided project assets.
  */
-const imageModules = import.meta.glob('../assets/gallery/**/*.jpg', {
-  eager: true,
-  import: 'default',
-}) as Record<string, string>;
+const imageModules = Object.assign(
+  {},
+  import.meta.glob('../assets/gallery/**/*.jpg', { eager: true, import: 'default' }),
+  import.meta.glob('../assets/gallery/**/*.jpeg', { eager: true, import: 'default' }),
+) as Record<string, string>;
 
 const categoryOrder: Array<{ slug: string; title: string }> = [
   { slug: 'centre-pivots', title: 'Centre pivots' },

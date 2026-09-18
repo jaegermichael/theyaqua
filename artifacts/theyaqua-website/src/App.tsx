@@ -94,18 +94,21 @@ const projects = [
   {
     title: 'From source to crop',
     type: 'Drip irrigation',
+    slug: 'drip-irrigation',
     image: getImage('drip-irrigation', 2),
     tint: 'from-[#0e3340]/10 to-[#0e3340]/80',
   },
   {
     title: 'A field with a rhythm',
     type: 'Centre pivots',
+    slug: 'centre-pivots',
     image: getImage('centre-pivots', 1),
     tint: 'from-[#2b6547]/10 to-[#2b6547]/80',
   },
   {
     title: 'Protected growing',
     type: 'Greenhouses',
+    slug: 'greenhouses',
     image: getImage('greenhouses', 6),
     tint: 'from-[#a77a2d]/10 to-[#193d4a]/80',
   },
@@ -150,6 +153,7 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeCapability, setActiveCapability] = useState(0);
+  const [activeProject, setActiveProject] = useState(0);
   const [submitted, setSubmitted] = useState(false);
   const [formError, setFormError] = useState('');
 
@@ -380,14 +384,45 @@ function App() {
       <section id="perspective" className="bg-[#d8f5e8] px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
         <div className="mx-auto max-w-[1380px]">
            <div className="reveal flex flex-col justify-between gap-6 md:flex-row md:items-end"><div><SectionLabel>Perspective / infrastructure</SectionLabel><h2 className="mt-7 max-w-[740px] font-display text-[clamp(2.8rem,5.5vw,5.7rem)] font-bold leading-[.92] tracking-[-.04em]">Water is more than a resource.<br /><span className="text-[#129b68]">It's infrastructure.</span></h2></div><p className="max-w-[280px] text-sm leading-6 text-[#10384a]/72">A working system gives the rest of the farm room to work better.</p></div>
-          <div className="mt-16 grid auto-rows-[220px] gap-4 md:grid-cols-12 md:auto-rows-[190px]">
-            {projects.map((project, index) => (
-              <motion.article key={project.title} whileHover={{ y: -5 }} className={`group relative overflow-hidden ${index === 0 ? 'md:col-span-7 md:row-span-2' : 'md:col-span-5'}`} data-testid={`card-project-${index}`}>
-                <img src={project.image} alt={`${project.title}, agricultural water infrastructure`} className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                <div className={`absolute inset-0 bg-gradient-to-t ${project.tint}`} />
-                 <div className="absolute bottom-0 left-0 right-0 flex items-end justify-between p-5 text-[#fffdf4] sm:p-7"><div><div className="font-mono-custom text-[9px] uppercase tracking-[.2em] text-[#ffbf3d]">{project.type}</div><h3 className="mt-2 font-display text-2xl font-bold tracking-[-.02em]">{project.title}</h3></div><ArrowUpRight size={20} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" /></div>
-              </motion.article>
-            ))}
+          <div className="mt-16 grid gap-4">
+            {projects.map((project, index) => {
+              const projectImages = getImages(project.slug);
+              const isOpen = activeProject === index;
+
+              return (
+                <motion.article key={project.title} whileHover={{ y: -5 }} className="group overflow-hidden rounded-[28px] border border-[#10384a]/10 bg-[#fffdf4]/70" data-testid={`card-project-${index}`}>
+                  <button type="button" onClick={() => setActiveProject(isOpen ? -1 : index)} className="block w-full text-left" aria-expanded={isOpen}>
+                    <div className="relative h-[280px] overflow-hidden md:h-[340px]">
+                      <img src={project.image} alt={`${project.title}, agricultural water infrastructure`} className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                      <div className={`absolute inset-0 bg-gradient-to-t ${project.tint}`} />
+                      <div className="absolute bottom-0 left-0 right-0 flex items-end justify-between p-5 text-[#fffdf4] sm:p-7">
+                        <div>
+                          <div className="font-mono-custom text-[9px] uppercase tracking-[.2em] text-[#ffbf3d]">{project.type}</div>
+                          <h3 className="mt-2 font-display text-2xl font-bold tracking-[-.02em]">{project.title}</h3>
+                        </div>
+                        <span className={`shrink-0 rounded-full border border-[#fffdf4]/40 p-2 text-[#fffdf4] transition-transform ${isOpen ? 'rotate-180' : ''}`}>
+                          <ChevronDown size={16} />
+                        </span>
+                      </div>
+                    </div>
+                  </button>
+
+                  {isOpen && (
+                    <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} className="border-t border-[#10384a]/10 bg-[#fffdf4] px-5 py-6 sm:px-7">
+                      <div className="mb-4 flex items-center justify-between gap-4">
+                        <span className="font-mono-custom text-[10px] uppercase tracking-[.2em] text-[#129b68]">Service gallery</span>
+                        <span className="text-xs font-semibold text-[#10384a]/70">{projectImages.length} images</span>
+                      </div>
+                      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                        {projectImages.map((src, imageIndex) => (
+                          <img key={`${project.slug}-${imageIndex}`} src={src} alt={`${project.title} — photo ${imageIndex + 1}`} className="aspect-[4/3] w-full rounded-xl object-cover shadow-[0_10px_30px_rgba(16,56,74,0.08)]" loading="lazy" />
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </motion.article>
+              );
+            })}
           </div>
         </div>
       </section>
