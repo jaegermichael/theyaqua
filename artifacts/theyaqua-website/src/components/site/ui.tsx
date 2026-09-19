@@ -1,19 +1,20 @@
-import { Droplets } from 'lucide-react';
 import { useEffect, useRef, type ReactNode } from 'react';
 
 export function BrandMark({ light = false }: { light?: boolean }) {
   return (
     <span className="flex items-center gap-3" data-testid="brand-theyaqua">
-      <span className="relative flex h-9 w-9 items-center justify-center rounded-[2px] bg-fern text-paper">
-        <Droplets size={17} strokeWidth={2.1} />
-        <span className="absolute -bottom-1 -right-1 h-2.5 w-2.5 rounded-full border-2 border-paper bg-amber" />
-      </span>
+      <img
+        src="/logo-emblem.png"
+        alt="Theyaqua logo"
+        className="h-11 w-11 rounded-full bg-white object-cover shadow-sm"
+      />
       <span
-        className={`font-display text-[1.35rem] font-semibold tracking-[-0.01em] ${
+        className={`text-[1.3rem] font-bold uppercase tracking-[0.04em] ${
           light ? 'text-paper' : 'text-ink'
         }`}
       >
-        theyaqua<span className="text-amber">.</span>
+        They<span className="text-fern">aqua</span>
+        <span className="text-amber">.</span>
       </span>
     </span>
   );
@@ -30,7 +31,7 @@ export function SectionLabel({
 }) {
   return (
     <div
-      className={`flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.2em] ${
+      className={`flex w-fit items-center gap-3 font-mono text-[11px] uppercase tracking-[0.2em] ${
         light ? 'text-amber' : 'text-pine'
       } ${className}`}
     >

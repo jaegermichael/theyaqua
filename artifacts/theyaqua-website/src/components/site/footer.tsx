@@ -42,7 +42,7 @@ export function Footer() {
             </p>
             <a
               href="#contact"
-              className="group mt-6 inline-flex items-center gap-3 rounded-[2px] bg-amber px-6 py-4 text-[14px] font-semibold text-ink transition-colors hover:bg-paper"
+              className="group mt-6 inline-flex items-center gap-3 rounded-full bg-amber px-6 py-4 text-[14px] font-bold text-ink transition-colors hover:bg-paper"
             >
               Plan your system
               <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">

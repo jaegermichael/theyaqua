@@ -1,27 +1,45 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowDownRight, MoveRight } from 'lucide-react';
-import { heroImage } from '../../data/gallery';
+import { ArrowDownRight, Droplets, Gauge, MoveRight, Zap } from 'lucide-react';
+import { getImage } from '../../data/gallery';
 import { principles } from '../../data/site';
-import { SectionLabel } from './ui';
 
-const entrance = { opacity: 0, y: 18 } as const;
+const principleIcons = [Droplets, Gauge, Zap];
+
+const entrance = { opacity: 0, y: 20 } as const;
 
 export function Hero() {
   const { scrollY } = useScroll();
-  const heroImageY = useTransform(scrollY, [0, 900], [0, 110]);
+  const heroImageY = useTransform(scrollY, [0, 1000], [0, 120]);
 
   return (
-    <section id="top" className="relative overflow-hidden bg-paper pt-24 sm:pt-28">
-      <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
+    <section
+      id="top"
+      className="relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-deep text-paper"
+    >
+      <motion.img
+        style={{ y: heroImageY }}
+        src={getImage('centre-pivots', 1)}
+        fetchPriority="high"
+        decoding="async"
+        alt="Centre pivot irrigation system watering a large green field"
+        className="absolute inset-0 h-full w-full scale-[1.12] object-cover"
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-deep/75 via-deep/40 to-deep/90" aria-hidden="true" />
+      <div
+        className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(13,27,64,0.45)_100%)]"
+        aria-hidden="true"
+      />
+
+      <div className="relative z-10 mx-auto flex w-full max-w-[1400px] flex-1 flex-col items-center justify-center px-5 pb-16 pt-32 text-center sm:px-8 lg:px-12">
         <motion.div
           initial={entrance}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.05 }}
-          className="flex items-center justify-between gap-6"
+          className="flex items-center gap-2.5 rounded-full border border-paper/25 bg-deep/40 px-4 py-2 backdrop-blur-sm"
         >
-          <SectionLabel>Water infrastructure · Agriculture</SectionLabel>
-          <span className="hidden font-mono text-[11px] uppercase tracking-[0.18em] text-ink/50 sm:block">
-            Design · Install · Train
+          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-fern" />
+          <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-paper/90">
+            Irrigation &amp; agricultural engineering
           </span>
         </motion.div>
 
@@ -29,97 +47,78 @@ export function Hero() {
           initial={entrance}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.15 }}
-          className="relative z-10 mt-9 font-display text-[clamp(3.1rem,8vw,7.75rem)] font-semibold leading-[0.98] tracking-[-0.02em] text-ink"
+          className="mt-8 max-w-[16em] text-[clamp(2.9rem,6.6vw,6.2rem)] font-bold leading-[1.02] tracking-[-0.01em]"
         >
-          Smarter water. <span className="text-fern">Stronger agriculture.</span>
+          Smarter water.
+          <br />
+          <span className="text-amber">Stronger agriculture.</span>
         </motion.h1>
 
-        <div className="relative mt-8 grid gap-10 pb-14 lg:mt-0 lg:grid-cols-12 lg:gap-12 lg:pb-16">
-          <motion.div
-            initial={entrance}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            className="order-2 flex flex-col justify-center lg:order-1 lg:col-span-4 lg:pt-10"
+        <motion.p
+          initial={entrance}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+          className="mt-7 max-w-[58ch] text-[17px] leading-8 text-paper/80"
+        >
+          We engineer the systems that move water from source to soil — with clarity, care and a practical eye for
+          what your farm needs next.
+        </motion.p>
+
+        <motion.div
+          initial={entrance}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.42 }}
+          className="mt-10 flex flex-wrap items-center justify-center gap-4"
+        >
+          <a
+            href="#contact"
+            data-testid="link-hero-contact"
+            className="group inline-flex items-center gap-3 rounded-full bg-amber px-8 py-4 text-[15px] font-bold text-ink transition-colors hover:bg-paper"
           >
-            <p className="max-w-[46ch] text-[17px] leading-8 text-ink/75">
-              We engineer the systems that move water from source to soil — with clarity, care and a practical eye for
-              what your farm needs next.
-            </p>
-            <div className="mt-9 flex flex-wrap items-center gap-x-7 gap-y-4">
-              <a
-                href="#contact"
-                data-testid="link-hero-contact"
-                className="group inline-flex items-center gap-3 rounded-[2px] bg-amber px-7 py-4 text-[15px] font-semibold text-ink transition-colors hover:bg-ink hover:text-paper"
-              >
-                Plan your system
-                <MoveRight size={17} className="transition-transform duration-300 group-hover:translate-x-1" />
-              </a>
-              <a
-                href="#capabilities"
-                data-testid="link-hero-capabilities"
-                className="inline-flex items-center gap-2 border-b-2 border-ink pb-1.5 text-[15px] font-semibold text-ink transition-colors hover:border-fern hover:text-pine"
-              >
-                See capabilities
-                <ArrowDownRight size={16} />
-              </a>
-            </div>
-            <div className="mt-12 hidden items-center gap-3 border-t border-ink/10 pt-6 font-mono text-[11px] uppercase tracking-[0.18em] text-ink/55 lg:flex">
-              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-fern" />
-              Systems in operation · From source to soil
-            </div>
-          </motion.div>
-          <motion.figure
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.9, delay: 0.2 }}
-            className="order-1 -mx-5 sm:-mx-8 lg:order-2 lg:col-span-8 lg:mx-0 lg:-mt-14"
+            Plan your system
+            <MoveRight size={17} className="transition-transform duration-300 group-hover:translate-x-1" />
+          </a>
+          <a
+            href="#capabilities"
+            data-testid="link-hero-capabilities"
+            className="group inline-flex items-center gap-2.5 rounded-full border border-paper/40 px-8 py-4 text-[15px] font-bold text-paper transition-colors hover:border-paper hover:bg-paper/10"
           >
-            <div className="relative">
-              <div
-                aria-hidden="true"
-                className="absolute -bottom-4 -right-4 hidden h-[70%] w-1/3 translate-x-3 translate-y-3 bg-fern sm:block lg:-bottom-6 lg:-right-6"
-              />
-              <div className="relative overflow-hidden bg-deep">
-                <motion.img
-                  style={{ y: heroImageY }}
-                  src={heroImage}
-                  fetchPriority="high"
-                  decoding="async"
-                  alt="Drip irrigation lines running through a green field"
-                  className="h-[360px] w-full scale-[1.14] object-cover sm:h-[460px] lg:h-[540px]"
-                />
-                <div
-                  aria-hidden="true"
-                  className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-paper/90 to-transparent lg:h-24"
-                />
-                <figcaption className="absolute inset-x-0 bottom-0 flex items-center justify-between bg-gradient-to-t from-deep/85 to-transparent px-5 pb-4 pt-16 font-mono text-[11px] uppercase tracking-[0.18em] text-paper/85 sm:px-8 lg:px-6">
-                  <span>From source · to soil</span>
-                  <span className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-amber" />
-                    System in operation
-                  </span>
-                </figcaption>
+            See capabilities
+            <ArrowDownRight size={16} />
+          </a>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.55 }}
+          className="mt-16 grid w-full max-w-4xl gap-8 border-t border-paper/15 pt-10 sm:grid-cols-3"
+        >
+          {principles.map((principle, index) => {
+            const Icon = principleIcons[index] ?? Droplets;
+            return (
+              <div key={principle.title} className="flex flex-col items-center gap-2 text-center">
+                <Icon size={20} strokeWidth={1.8} className="text-amber" />
+                <span className="text-[14px] font-bold uppercase tracking-[0.08em] text-paper">
+                  {principle.title}
+                </span>
+                <span className="text-[13px] text-paper/65">{principle.note}</span>
               </div>
-            </div>
-          </motion.figure>
-        </div>
+            );
+          })}
+        </motion.div>
       </div>
 
-      <div className="border-t border-ink/10" aria-label="Company principles">
-        <div className="mx-auto grid max-w-[1400px] grid-cols-2 md:grid-cols-4">
-          {principles.map((principle, index) => (
-            <div
-              key={principle.title}
-              className={`flex items-center gap-3 border-ink/10 px-5 py-6 sm:px-8 lg:px-12 lg:py-7 ${
-                index % 2 === 1 ? 'max-md:border-l' : ''
-              } ${index > 1 ? 'max-md:border-t' : ''} ${index > 0 ? 'md:border-l' : ''}`}
-            >
-              <span className="font-mono text-[11px] text-amber">{String(index + 1).padStart(2, '0')}</span>
-              <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/80">
-                {principle.title} / {principle.note}
-              </span>
-            </div>
-          ))}
+      <div className="relative z-10 border-t border-paper/15">
+        <div className="mx-auto flex max-w-[1400px] flex-wrap items-center justify-center gap-x-6 gap-y-2 px-5 py-5 font-mono text-[11px] uppercase tracking-[0.18em] text-paper/60 sm:px-8 lg:px-12">
+          <span className="text-paper/85">Adapt · Endure · Evolve</span>
+          <span aria-hidden="true" className="hidden h-1 w-1 rounded-full bg-amber sm:block" />
+          <span>Centre pivots</span>
+          <span aria-hidden="true" className="hidden h-1 w-1 rounded-full bg-paper/30 sm:block" />
+          <span>Drip irrigation</span>
+          <span aria-hidden="true" className="hidden h-1 w-1 rounded-full bg-paper/30 sm:block" />
+          <span>Greenhouses</span>
+          <span aria-hidden="true" className="hidden h-1 w-1 rounded-full bg-paper/30 sm:block" />
+          <span>Storage · Training</span>
         </div>
       </div>
     </section>

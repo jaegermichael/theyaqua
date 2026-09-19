@@ -35,16 +35,19 @@ export function Header() {
   }, [menuOpen]);
 
   const closeMenu = () => setMenuOpen(false);
+  const light = !scrolled;
 
   return (
     <header
       className={`fixed inset-x-0 top-0 z-40 transition-all duration-300 ${
-        scrolled ? 'border-b border-ink/10 bg-paper/90 backdrop-blur-md' : 'border-b border-transparent bg-transparent'
+        scrolled
+          ? 'border-b border-ink/10 bg-paper/90 shadow-[0_8px_30px_rgba(13,27,64,0.06)] backdrop-blur-md'
+          : 'border-b border-transparent bg-transparent'
       }`}
     >
       <div className="mx-auto flex h-[76px] max-w-[1400px] items-center justify-between px-5 sm:px-8 lg:px-12">
-        <a href="#top" className="text-ink" onClick={closeMenu} data-testid="link-home">
-          <BrandMark />
+        <a href="#top" className={light ? 'text-paper' : 'text-ink'} onClick={closeMenu} data-testid="link-home">
+          <BrandMark light={light} />
         </a>
 
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Main navigation">
@@ -53,7 +56,9 @@ export function Header() {
               key={item.href}
               href={item.href}
               data-testid={`link-nav-${slugify(item.label)}`}
-              className="relative text-[13px] font-medium tracking-[0.02em] text-ink/75 transition-colors after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-0 after:bg-fern after:transition-all after:duration-300 hover:text-ink hover:after:w-full"
+              className={`relative text-[13px] font-semibold tracking-[0.02em] transition-colors after:absolute after:-bottom-1.5 after:left-0 after:h-0.5 after:w-0 after:rounded-full after:bg-amber after:transition-all after:duration-300 hover:after:w-full ${
+                light ? 'text-paper/85 hover:text-paper' : 'text-ink/75 hover:text-ink'
+              }`}
             >
               {item.label}
             </a>
@@ -61,24 +66,31 @@ export function Header() {
           <a
             href="#account"
             data-testid="link-nav-create-account"
-            className="text-[13px] font-medium tracking-[0.02em] text-ink/75 transition-colors hover:text-ink"
+            className={`text-[13px] font-semibold tracking-[0.02em] transition-colors ${
+              light ? 'text-paper/85 hover:text-paper' : 'text-ink/75 hover:text-ink'
+            }`}
           >
             Create account
           </a>
           <a
             href="#contact"
             data-testid="link-nav-start"
-            className="group inline-flex items-center gap-2.5 rounded-[2px] bg-ink px-5 py-3 text-[13px] font-semibold text-paper transition-colors hover:bg-pine"
+            className="group inline-flex items-center gap-2 rounded-full bg-amber px-5 py-2.5 text-[13px] font-bold text-ink transition-colors hover:bg-ink hover:text-paper"
           >
             Start a conversation
-            <ArrowUpRight size={15} className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            <ArrowUpRight
+              size={15}
+              className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+            />
           </a>
         </nav>
 
         <button
           type="button"
           onClick={() => setMenuOpen((open) => !open)}
-          className="-mr-2 flex h-11 w-11 items-center justify-center text-ink lg:hidden"
+          className={`-mr-2 flex h-11 w-11 items-center justify-center lg:hidden ${
+            light ? 'text-paper' : 'text-ink'
+          }`}
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={menuOpen}
           data-testid="button-mobile-menu"
@@ -86,7 +98,6 @@ export function Header() {
           {menuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
-
       {menuOpen && (
         <div className="fixed inset-0 z-50 flex flex-col bg-deep text-paper lg:hidden">
           <div className="flex h-[76px] shrink-0 items-center justify-between px-5 sm:px-8">
@@ -113,7 +124,7 @@ export function Header() {
                 className="group flex items-baseline gap-4 border-b border-paper/10 py-5"
               >
                 <span className="font-mono text-xs text-amber">{String(index + 1).padStart(2, '0')}</span>
-                <span className="font-display text-4xl font-medium leading-none transition-colors group-hover:text-amber">
+                <span className="text-3xl font-bold leading-none transition-colors group-hover:text-amber">
                   {item.label}
                 </span>
               </a>
@@ -122,7 +133,7 @@ export function Header() {
               href="#account"
               onClick={closeMenu}
               data-testid="link-mobile-create-account"
-              className="py-5 text-[15px] font-medium text-paper/70"
+              className="py-5 text-[15px] font-semibold text-paper/70"
             >
               Create account
             </a>
@@ -132,13 +143,13 @@ export function Header() {
               href="#contact"
               onClick={closeMenu}
               data-testid="link-mobile-cta"
-              className="group flex items-center justify-between rounded-[2px] bg-amber px-5 py-4 text-[15px] font-semibold text-ink"
+              className="flex items-center justify-between rounded-full bg-amber px-6 py-4 text-[15px] font-bold text-ink"
             >
               Talk to Theyaqua
               <ArrowUpRight size={17} />
             </a>
-            <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.18em] text-paper/45">
-              Water · Power · Agriculture
+            <p className="mt-5 text-center font-mono text-[11px] uppercase tracking-[0.18em] text-paper/45">
+              Adapt · Endure · Evolve
             </p>
           </div>
         </div>

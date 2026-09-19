@@ -9,7 +9,7 @@ interface FieldAccount {
 }
 
 const inputClasses =
-  'mt-2 w-full rounded-[2px] border border-ink/20 bg-transparent px-4 py-3.5 text-[15px] text-ink outline-none transition-colors placeholder:text-ink/35 focus:border-fern';
+  'mt-2 w-full rounded-full border border-ink/20 bg-transparent px-5 py-3.5 text-[15px] text-ink outline-none transition-colors placeholder:text-ink/35 focus:border-fern';
 
 const labelClasses = 'block text-[13px] font-semibold text-ink';
 
@@ -64,23 +64,23 @@ export function AccountSection() {
 
   return (
     <section id="account" className="bg-deep py-24 text-paper lg:py-32">
-      <div className="mx-auto grid max-w-[1400px] gap-14 px-5 sm:px-8 lg:grid-cols-12 lg:gap-20 lg:px-12">
-        <div className="lg:col-span-5">
-          <Reveal>
-            <SectionLabel light>Field account · Access</SectionLabel>
-            <h2 className="mt-7 font-display text-[clamp(2.4rem,3.8vw,3.9rem)] font-medium leading-[1.05] tracking-[-0.015em]">
-              Keep your farm plans <span className="text-amber">close.</span>
-            </h2>
-            <p className="mt-7 max-w-[46ch] text-[16px] leading-7 text-paper/70">
-              Create a field account to keep your basic farm profile ready for the next conversation with Theyaqua.
-            </p>
-          </Reveal>
-        </div>
-        <div className="lg:col-span-7">
+      <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
+        <Reveal className="flex flex-col items-center gap-8 text-center">
+          <SectionLabel light className="justify-center">
+            Field account · Access
+          </SectionLabel>
+          <h2 className="max-w-[20em] text-[clamp(2.4rem,3.8vw,3.9rem)] font-bold leading-[1.05] tracking-[-0.01em]">
+            Keep your farm plans <span className="text-amber">close.</span>
+          </h2>
+          <p className="max-w-[52ch] text-[16px] leading-7 text-paper/70">
+            Create a field account to keep your basic farm profile ready for the next conversation with Theyaqua.
+          </p>
+        </Reveal>
+        <div className="mx-auto mt-12 max-w-[760px]">
           <Reveal delay={100}>
             {account ? (
               <div className="rounded-[2px] bg-paper p-7 text-ink sm:p-10" data-testid="status-account-created">
-                <span className="flex h-12 w-12 items-center justify-center rounded-[2px] bg-fern text-paper">
+                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-fern text-paper">
                   <Check size={24} />
                 </span>
                 <h3 className="mt-7 font-display text-3xl font-medium tracking-[-0.01em]">Welcome, {account.name}.</h3>
@@ -172,7 +172,7 @@ export function AccountSection() {
                 )}
                 <button
                   type="submit"
-                  className="group mt-9 inline-flex items-center gap-3 rounded-[2px] bg-ink px-7 py-4 text-[15px] font-semibold text-paper transition-colors hover:bg-pine"
+                  className="group mt-9 inline-flex items-center gap-3 rounded-full bg-ink px-8 py-4 text-[15px] font-bold text-paper transition-colors hover:bg-pine"
                   data-testid="button-create-account"
                 >
                   Create account

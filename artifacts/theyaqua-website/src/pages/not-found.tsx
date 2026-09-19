@@ -12,7 +12,7 @@ export default function NotFound() {
       </p>
       <a
         href="/"
-        className="mt-8 inline-flex items-center gap-3 rounded-[2px] bg-ink px-6 py-3.5 text-[14px] font-semibold text-paper transition-colors hover:bg-fern"
+        className="mt-8 inline-flex items-center gap-3 rounded-full bg-ink px-6 py-3.5 text-[14px] font-bold text-paper transition-colors hover:bg-fern"
       >
         <ArrowLeft size={16} />
         Back to Theyaqua

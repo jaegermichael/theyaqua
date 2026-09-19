@@ -3,7 +3,7 @@ import { Check, MoveRight, Phone, Send } from 'lucide-react';
 import { Reveal, SectionLabel } from './ui';
 
 const inputClasses =
-  'mt-2 w-full rounded-[2px] border border-ink/20 bg-paper/80 px-4 py-3.5 text-[15px] text-ink outline-none transition-colors placeholder:text-ink/35 focus:border-fern';
+  'mt-2 w-full rounded-full border border-ink/20 bg-paper/80 px-5 py-3.5 text-[15px] text-ink outline-none transition-colors placeholder:text-ink/35 focus:border-fern';
 
 const labelClasses = 'block text-[13px] font-semibold text-ink';
 
@@ -29,46 +29,52 @@ export function ContactSection() {
 
   return (
     <section id="contact" className="bg-paper py-24 lg:py-36">
-      <div className="mx-auto grid max-w-[1400px] gap-14 px-5 sm:px-8 lg:grid-cols-12 lg:gap-20 lg:px-12">
-        <div className="lg:col-span-5">
-          <Reveal>
-            <SectionLabel>Next step · Your field</SectionLabel>
-            <h2 className="mt-7 font-display text-[clamp(2.4rem,3.8vw,3.9rem)] font-medium leading-[1.05] tracking-[-0.015em] text-ink">
-              Let&rsquo;s build a better water system <span className="text-fern">for your farm.</span>
-            </h2>
-            <p className="mt-7 max-w-[46ch] text-[16px] leading-7 text-ink/70">
-              Tell us what you are working with, what is changing, and where you want the water to go. We will start
-              there.
-            </p>
-            <div className="mt-10 border-t border-ink/12">
-              <div
-                className="flex items-center gap-3 border-b border-ink/12 py-5 text-[15px] font-medium text-ink/80"
-                data-testid="text-contact-details"
-              >
-                <Phone size={17} className="shrink-0 text-fern" />
-                Contact details shared after your enquiry
+      <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
+        <Reveal className="flex flex-col items-center gap-7 text-center">
+          <SectionLabel className="justify-center">Next step · Your field</SectionLabel>
+          <h2 className="max-w-[20em] text-[clamp(2.4rem,3.8vw,3.9rem)] font-bold leading-[1.05] tracking-[-0.01em] text-ink">
+            Let&rsquo;s build a better water system <span className="text-fern">for your farm.</span>
+          </h2>
+          <p className="max-w-[52ch] text-[16px] leading-7 text-ink/70">
+            Tell us what you are working with, what is changing, and where you want the water to go. We will start
+            there.
+          </p>
+        </Reveal>
+        <div className="mt-14 grid gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-5">
+            <Reveal className="h-full">
+              <div className="flex h-full flex-col justify-center border-t border-ink/12">
+                <div
+                  className="flex items-center gap-3 border-b border-ink/12 py-5 text-[15px] font-semibold text-ink/80"
+                  data-testid="text-contact-details"
+                >
+                  <Phone size={17} className="shrink-0 text-pine" />
+                  Contact details shared after your enquiry
+                </div>
+                <a
+                  href="https://wa.me/0000000000"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-3 border-b border-ink/12 py-5 text-[15px] font-semibold text-ink transition-colors hover:text-pine"
+                  data-testid="link-whatsapp"
+                >
+                  <Send size={17} className="shrink-0 text-pine" />
+                  Message us on WhatsApp
+                </a>
+                <p className="pt-6 font-mono text-[11px] uppercase tracking-[0.18em] text-ink/45">
+                  Adapt · Endure · Evolve
+                </p>
               </div>
-              <a
-                href="https://wa.me/0000000000"
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-3 border-b border-ink/12 py-5 text-[15px] font-medium text-ink transition-colors hover:text-pine"
-                data-testid="link-whatsapp"
-              >
-                <Send size={17} className="shrink-0 text-fern" />
-                Message us on WhatsApp
-              </a>
-            </div>
-          </Reveal>
-        </div>
-        <div className="lg:col-span-7">
-          <Reveal delay={100}>
+            </Reveal>
+          </div>
+          <div className="lg:col-span-7">
+            <Reveal delay={100}>
             {submitted ? (
               <div
                 className="flex min-h-[440px] flex-col justify-center rounded-[2px] border border-fern/30 bg-fern/10 p-8 sm:p-12"
                 data-testid="status-form-success"
               >
-                <span className="flex h-12 w-12 items-center justify-center rounded-[2px] bg-fern text-paper">
+                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-fern text-paper">
                   <Check size={24} />
                 </span>
                 <h3 className="mt-7 font-display text-3xl font-medium tracking-[-0.01em] text-ink">
@@ -138,7 +144,7 @@ export function ContactSection() {
                 )}
                 <button
                   type="submit"
-                  className="group mt-9 inline-flex items-center gap-3 rounded-[2px] bg-ink px-7 py-4 text-[15px] font-semibold text-paper transition-colors hover:bg-pine"
+                  className="group mt-9 inline-flex items-center gap-3 rounded-full bg-ink px-8 py-4 text-[15px] font-bold text-paper transition-colors hover:bg-pine"
                   data-testid="button-submit-contact"
                 >
                   Send your note
@@ -152,7 +158,9 @@ export function ContactSection() {
             )}
           </Reveal>
         </div>
+        </div>
       </div>
     </section>
   );
 }
+

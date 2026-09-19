@@ -10,14 +10,12 @@ export function Capabilities() {
   return (
     <section id="capabilities" className="bg-sand py-24 lg:py-32">
       <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
-        <Reveal className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
-          <div className="max-w-[720px]">
-            <SectionLabel>Capabilities · The full picture</SectionLabel>
-            <h2 className="mt-7 font-display text-[clamp(2.4rem,4.2vw,4.2rem)] font-medium leading-[1.02] tracking-[-0.015em] text-ink">
-              Everything your farm needs to <span className="text-fern">move water.</span>
-            </h2>
-          </div>
-          <p className="max-w-[36ch] text-[15px] leading-7 text-ink/70 md:pb-2 md:text-right">
+        <Reveal className="flex flex-col items-center gap-8 text-center">
+          <SectionLabel className="justify-center">Capabilities · The full picture</SectionLabel>
+          <h2 className="max-w-[20em] font-display text-[clamp(2.4rem,4.2vw,4.2rem)] font-bold leading-[1.05] tracking-[-0.01em] text-ink">
+            Everything your farm needs to <span className="text-fern">move water.</span>
+          </h2>
+          <p className="max-w-[46ch] text-[15px] leading-7 text-ink/70">
             One connected view of the source, the power, the pipe and the field.
           </p>
         </Reveal>
@@ -50,7 +48,7 @@ export function Capabilities() {
                     </span>
                     <span>
                       <span
-                        className={`block font-display text-[1.65rem] font-medium leading-tight tracking-[-0.01em] transition-all duration-300 lg:text-[2.1rem] ${
+                        className={`block font-display text-[1.65rem] font-bold leading-tight tracking-[-0.01em] transition-all duration-300 lg:text-[2.1rem] ${
                           active ? 'text-ink' : 'text-ink'
                         }`}
                       >

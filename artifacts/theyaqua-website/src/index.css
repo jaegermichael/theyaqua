@@ -5,14 +5,15 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  /* Theyaqua palette — refined from the existing brand hues */
-  --color-ink: #10384a;
-  --color-deep: #0a2331;
-  --color-paper: #f7f4ec;
-  --color-sand: #efe8d8;
-  --color-fern: #12a96b;
-  --color-pine: #0b6b4a;
-  --color-amber: #ffad24;
+  /* Theyaqua palette — extracted from the brand logo */
+  --color-ink: #16295e;
+  --color-deep: #0d1b40;
+  --color-paper: #f7f5ee;
+  --color-sand: #ede9dc;
+  --color-fern: #2fa13d;
+  --color-pine: #1e7a30;
+  --color-amber: #dfaf26;
+  --color-sky: #2e86c8;
   --color-clay: #a64034;
 }
 
@@ -153,9 +154,9 @@
   --chart-4: 198 64% 17%;
   --chart-5: 25 80% 55%;
 
-  --app-font-sans: 'Archivo', ui-sans-serif, system-ui, sans-serif;
-  --app-font-serif: 'Fraunces', Georgia, serif;
-  --app-font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', monospace;
+  --app-font-sans: 'Sansation', 'Segoe UI', sans-serif;
+  --app-font-serif: 'Sansation', 'Segoe UI', sans-serif;
+  --app-font-mono: 'Space Mono', ui-monospace, 'SFMono-Regular', monospace;
   --radius: 0.5rem; /* 8px */
   --shadow-2xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0); /*replace with H S L */
   --shadow-xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0); /*replace with H S L */
