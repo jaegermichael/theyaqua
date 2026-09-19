@@ -2,13 +2,13 @@ import { useState } from 'react';
 import { Check, ChevronDown } from 'lucide-react';
 import { capabilities } from '../../data/site';
 import { getImages } from '../../data/gallery';
-import { Reveal, SectionLabel } from './ui';
+import { Reveal, SectionLabel, gallerySpanClass } from './ui';
 
 export function Capabilities() {
   const [activeCapability, setActiveCapability] = useState(0);
 
   return (
-    <section id="capabilities" className="bg-sand py-24 lg:py-32">
+    <section id="capabilities" className="bg-sand py-24 lg:py-36">
       <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
         <Reveal className="flex flex-col items-center gap-8 text-center">
           <SectionLabel className="justify-center">Capabilities · The full picture</SectionLabel>
@@ -62,7 +62,7 @@ export function Capabilities() {
                       {String(images.length).padStart(2, '0')} photos
                     </span>
                     <span
-                      className={`flex h-10 w-10 items-center justify-center self-start rounded-full border transition-all duration-300 ${
+                      className={`flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-300 ${
                         active
                           ? 'rotate-180 border-ink bg-ink text-paper'
                           : 'border-ink/20 text-ink/60'
@@ -90,17 +90,25 @@ export function Capabilities() {
                           </ul>
                         </div>
                         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-                          {images.map((src, imageIndex) => (
-                            <div key={src} className="overflow-hidden bg-ink/5">
-                              <img
-                                src={src}
-                                alt={`${capability.title} — photo ${imageIndex + 1}`}
-                                loading="lazy"
-                                decoding="async"
-                                className="aspect-[4/3] w-full object-cover transition-transform duration-700 hover:scale-[1.04]"
-                              />
-                            </div>
-                          ))}
+                          {images.map((src, imageIndex) => {
+                            const wide = imageIndex === images.length - 1 && images.length % 3 === 1;
+                            return (
+                              <div
+                                key={src}
+                                className={`overflow-hidden bg-ink/5 ${gallerySpanClass(imageIndex, images.length)}`}
+                              >
+                                <img
+                                  src={src}
+                                  alt={`${capability.title} — photo ${imageIndex + 1}`}
+                                  loading="lazy"
+                                  decoding="async"
+                                  className={`w-full object-cover transition-transform duration-700 hover:scale-[1.04] ${
+                                    wide ? 'aspect-[21/9]' : 'aspect-[4/3]'
+                                  }`}
+                                />
+                              </div>
+                            );
+                          })}
                         </div>
                       </div>
                     </div>

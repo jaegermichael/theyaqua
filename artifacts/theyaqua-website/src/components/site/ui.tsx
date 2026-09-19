@@ -41,7 +41,15 @@ export function SectionLabel({
   );
 }
 
-/** Scroll-triggered reveal. Respects prefers-reduced-motion via the global CSS override. */
+/** Keeps photo grids gapless when the count doesn't fill the final row. */
+export function gallerySpanClass(index: number, count: number): string {
+  if (index !== count - 1) return '';
+  if (count % 3 === 1) return 'sm:col-span-3 max-sm:col-span-2';
+  if (count % 3 === 2) return 'sm:col-span-2 max-sm:col-span-2';
+  if (count % 2 === 1) return 'max-sm:col-span-2';
+  return '';
+}
+
 export function Reveal({
   children,
   delay = 0,

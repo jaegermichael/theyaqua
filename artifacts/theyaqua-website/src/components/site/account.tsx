@@ -63,7 +63,7 @@ export function AccountSection() {
   };
 
   return (
-    <section id="account" className="bg-deep py-24 text-paper lg:py-32">
+    <section id="account" className="bg-deep py-24 text-paper lg:py-36">
       <div className="mx-auto max-w-[1400px] px-5 sm:px-8 lg:px-12">
         <Reveal className="flex flex-col items-center gap-8 text-center">
           <SectionLabel light className="justify-center">

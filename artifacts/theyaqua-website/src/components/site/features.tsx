@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { ArrowUpRight, Plus, Sprout } from 'lucide-react';
 import { approachSteps, projects, type ProjectFeature } from '../../data/site';
 import { getImage, getImages } from '../../data/gallery';
-import { Reveal, SectionLabel } from './ui';
+import { Reveal, SectionLabel, gallerySpanClass } from './ui';
 
 /** Editorial statement with a real field photograph set inline within the sentence. */
 export function Thesis() {
@@ -138,22 +138,22 @@ function ProjectRow({ project, index }: { project: ProjectFeature; index: number
             decoding="async"
             className="aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
           />
+          {images[1] && (
+            <div
+              className={`absolute bottom-0 hidden w-[34%] overflow-hidden border-l-4 border-t-4 border-sand bg-ink/5 md:block ${
+                reversed ? 'left-0' : 'right-0'
+              }`}
+            >
+              <img
+                src={images[1]}
+                alt={`${project.title} — detail view`}
+                loading="lazy"
+                decoding="async"
+                className="aspect-[4/3] w-full object-cover"
+              />
+            </div>
+          )}
         </div>
-        {images[1] && (
-          <div
-            className={`absolute -bottom-10 hidden w-[38%] overflow-hidden border-[6px] border-sand bg-ink/5 md:block ${
-              reversed ? '-left-6' : '-right-6'
-            }`}
-          >
-            <img
-              src={images[1]}
-              alt={`${project.title} — detail view`}
-              loading="lazy"
-              decoding="async"
-              className="aspect-[4/3] w-full object-cover"
-            />
-          </div>
-        )}
       </div>
       <div className={`lg:col-span-5 ${reversed ? 'lg:order-1' : ''}`}>
         <Reveal>
@@ -183,17 +183,25 @@ function ProjectRow({ project, index }: { project: ProjectFeature; index: number
               <span className="font-mono text-[11px] text-ink/50">{images.length} photos</span>
             </div>
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-              {images.map((src, imageIndex) => (
-                <div key={`${project.slug}-${imageIndex}`} className="overflow-hidden bg-ink/5">
-                  <img
-                    src={src}
-                    alt={`${project.title} — photo ${imageIndex + 1}`}
-                    loading="lazy"
-                    decoding="async"
-                    className="aspect-[4/3] w-full object-cover transition-transform duration-700 hover:scale-[1.04]"
-                  />
-                </div>
-              ))}
+              {images.map((src, imageIndex) => {
+                const wide = imageIndex === images.length - 1 && images.length % 3 === 1;
+                return (
+                  <div
+                    key={`${project.slug}-${imageIndex}`}
+                    className={`overflow-hidden bg-ink/5 ${gallerySpanClass(imageIndex, images.length)}`}
+                  >
+                    <img
+                      src={src}
+                      alt={`${project.title} — photo ${imageIndex + 1}`}
+                      loading="lazy"
+                      decoding="async"
+                      className={`w-full object-cover transition-transform duration-700 hover:scale-[1.04] ${
+                        wide ? 'aspect-[21/9]' : 'aspect-[4/3]'
+                      }`}
+                    />
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
