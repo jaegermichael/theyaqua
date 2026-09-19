@@ -1,5 +1,5 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "buildCommand": "pnpm exec tsc --build && PORT=5173 BASE_PATH=/ pnpm --filter @workspace/theyaqua-website build",
-  "outputDirectory": "public"
+  "outputDirectory": "artifacts/theyaqua-website/dist"
 }
