@@ -1,9 +1,9 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowDownRight, Droplets, Gauge, MoveRight, Zap } from 'lucide-react';
+import { ArrowDownRight, Droplets, Gauge, MoveRight, Sprout, Zap } from 'lucide-react';
 import { getImage } from '../../data/gallery';
 import { principles } from '../../data/site';
 
-const principleIcons = [Droplets, Gauge, Zap];
+const principleIcons = [Droplets, Gauge, Zap, Sprout];
 
 const entrance = { opacity: 0, y: 20 } as const;
 
@@ -91,7 +91,7 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.55 }}
-          className="mt-16 grid w-full max-w-4xl gap-8 border-t border-paper/15 pt-10 sm:grid-cols-3"
+          className="mt-16 grid w-full max-w-5xl grid-cols-2 gap-8 border-t border-paper/15 pt-10 sm:grid-cols-4"
         >
           {principles.map((principle, index) => {
             const Icon = principleIcons[index] ?? Droplets;
