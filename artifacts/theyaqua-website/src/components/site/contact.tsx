@@ -138,7 +138,7 @@ export function ContactSection() {
                 )}
                 <button
                   type="submit"
-                  className="group mt-9 inline-flex items-center gap-3 rounded-[2px] bg-ink px-7 py-4 text-[15px] font-semibold text-paper transition-colors hover:bg-fern"
+                  className="group mt-9 inline-flex items-center gap-3 rounded-[2px] bg-ink px-7 py-4 text-[15px] font-semibold text-paper transition-colors hover:bg-pine"
                   data-testid="button-submit-contact"
                 >
                   Send your note

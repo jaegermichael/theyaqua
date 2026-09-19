@@ -68,7 +68,7 @@ export function Header() {
           <a
             href="#contact"
             data-testid="link-nav-start"
-            className="group inline-flex items-center gap-2.5 rounded-[2px] bg-ink px-5 py-3 text-[13px] font-semibold text-paper transition-colors hover:bg-fern"
+            className="group inline-flex items-center gap-2.5 rounded-[2px] bg-ink px-5 py-3 text-[13px] font-semibold text-paper transition-colors hover:bg-pine"
           >
             Start a conversation
             <ArrowUpRight size={15} className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
@@ -132,7 +132,7 @@ export function Header() {
               href="#contact"
               onClick={closeMenu}
               data-testid="link-mobile-cta"
-              className="group flex items-center justify-between rounded-[2px] bg-fern px-5 py-4 text-[15px] font-semibold text-paper"
+              className="group flex items-center justify-between rounded-[2px] bg-amber px-5 py-4 text-[15px] font-semibold text-ink"
             >
               Talk to Theyaqua
               <ArrowUpRight size={17} />

@@ -124,7 +124,7 @@ export function Approach() {
             {approachSteps.map((step, index) => (
               <Reveal key={step.title} delay={index * 70}>
                 <div className="group grid grid-cols-[3.5rem_1fr] gap-5 border-t border-ink/12 py-9 sm:gap-8 lg:py-10">
-                  <span className="pt-1.5 font-mono text-sm text-fern">{step.number}</span>
+                  <span className="pt-1.5 font-mono text-sm text-pine">{step.number}</span>
                   <div>
                     <div className="flex items-center justify-between gap-6">
                       <h3 className="font-display text-[1.7rem] font-medium leading-tight tracking-[-0.01em] text-ink">

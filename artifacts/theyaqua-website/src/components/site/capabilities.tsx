@@ -44,7 +44,7 @@ export function Capabilities() {
                     className="grid w-full grid-cols-[auto_1fr_auto] items-center gap-5 px-5 py-7 text-left sm:grid-cols-[3.5rem_1fr_auto_auto] sm:gap-6 sm:px-8 lg:grid-cols-[4.5rem_1fr_auto_3rem] lg:px-12 lg:py-8"
                   >
                     <span
-                      className={`font-mono text-sm transition-colors ${active ? 'text-amber' : 'text-fern'}`}
+                      className={`font-mono text-sm transition-colors ${active ? 'text-amber' : 'text-pine'}`}
                     >
                       {capability.number}
                     </span>
