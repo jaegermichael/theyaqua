@@ -13,7 +13,7 @@ export function Capabilities() {
         <Reveal className="flex flex-col items-center gap-8 text-center">
           <SectionLabel className="justify-center">Capabilities · The full picture</SectionLabel>
           <h2 className="max-w-[20em] font-display text-[clamp(2.4rem,4.2vw,4.2rem)] font-bold leading-[1.05] tracking-[-0.01em] text-ink">
-            Everything your farm needs to <span className="text-fern">move water.</span>
+            Irrigation systems, greenhouses <span className="text-fern">and water infrastructure.</span>
           </h2>
           <p className="max-w-[46ch] text-[15px] leading-7 text-ink/70">
             One connected view of the source, the power, the pipe and the field.
@@ -29,6 +29,7 @@ export function Capabilities() {
             return (
               <Reveal key={capability.number} delay={index * 60}>
                 <article
+                  id={capability.slug}
                   className={`border-t border-ink/12 transition-colors duration-300 ${
                     active ? 'bg-paper' : 'hover:bg-paper/60'
                   }`}
@@ -38,6 +39,7 @@ export function Capabilities() {
                     type="button"
                     onClick={() => setActiveCapability(active ? -1 : index)}
                     aria-expanded={active}
+                    aria-controls={`details-${capability.slug}`}
                     data-testid={`button-capability-${capability.number}`}
                     className="grid w-full grid-cols-[auto_1fr_auto] items-center gap-5 px-5 py-7 text-left sm:grid-cols-[3.5rem_1fr_auto_auto] sm:gap-6 sm:px-8 lg:grid-cols-[4.5rem_1fr_auto_3rem] lg:px-12 lg:py-8"
                   >
@@ -72,8 +74,7 @@ export function Capabilities() {
                     </span>
                   </button>
 
-                  {active && (
-                    <div className="animate-in fade-in slide-in-from-top-2 duration-500 border-t border-ink/10">
+                    <div id={`details-${capability.slug}`} hidden={!active} className="animate-in fade-in slide-in-from-top-2 duration-500 border-t border-ink/10">
                       <div className="grid gap-10 px-5 py-10 sm:px-8 lg:grid-cols-[1fr_1.5fr] lg:px-12 lg:py-12">
                         <div>
                           <span className="flex items-center gap-3 text-fern">
@@ -112,7 +113,6 @@ export function Capabilities() {
                         </div>
                       </div>
                     </div>
-                  )}
                 </article>
               </Reveal>
             );

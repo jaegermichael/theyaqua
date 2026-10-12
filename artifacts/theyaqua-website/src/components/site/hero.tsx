@@ -5,8 +5,6 @@ import { principles } from '../../data/site';
 
 const principleIcons = [Droplets, Gauge, Zap, Sprout];
 
-const entrance = { opacity: 0, y: 20 } as const;
-
 export function Hero() {
   const { scrollY } = useScroll();
   const heroImageY = useTransform(scrollY, [0, 1000], [0, 120]);
@@ -32,7 +30,7 @@ export function Hero() {
 
       <div className="relative z-10 mx-auto flex w-full max-w-[1400px] flex-1 flex-col items-center justify-center px-5 pb-16 pt-32 text-center sm:px-8 lg:px-12">
         <motion.div
-          initial={entrance}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.05 }}
           className="flex items-center gap-2.5 rounded-full border border-paper/25 bg-deep/40 px-4 py-2 backdrop-blur-sm"
@@ -44,7 +42,7 @@ export function Hero() {
         </motion.div>
 
         <motion.h1
-          initial={entrance}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.15 }}
           className="mt-8 max-w-[16em] text-[clamp(2.9rem,6.6vw,6.2rem)] font-bold leading-[1.02] tracking-[-0.01em]"
@@ -55,17 +53,17 @@ export function Hero() {
         </motion.h1>
 
         <motion.p
-          initial={entrance}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.3 }}
           className="mt-7 max-w-[58ch] text-[17px] leading-8 text-paper/80"
         >
-          We engineer the systems that move water from source to soil — with clarity, care and a practical eye for
-          what your farm needs next.
+          Theyaqua designs and installs centre pivot and drip irrigation systems, greenhouses, steel pipe works
+          and water storage reservoirs — connecting your water source to your crop.
         </motion.p>
 
         <motion.div
-          initial={entrance}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.42 }}
           className="mt-10 flex flex-wrap items-center justify-center gap-4"
@@ -88,7 +86,7 @@ export function Hero() {
           </a>
         </motion.div>
         <motion.div
-          initial={{ opacity: 0 }}
+          initial={false}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.55 }}
           className="mt-16 grid w-full max-w-5xl grid-cols-2 gap-8 border-t border-paper/15 pt-10 sm:grid-cols-4"

@@ -2,6 +2,7 @@
 
 # compiled output
 dist
+.prerender
 tmp
 out-tsc
 /public

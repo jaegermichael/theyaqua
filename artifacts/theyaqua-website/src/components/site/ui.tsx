@@ -64,10 +64,11 @@ export function Reveal({
   useEffect(() => {
     const node = ref.current;
     if (!node) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || node.getBoundingClientRect().top < window.innerHeight) {
       node.classList.add('is-visible');
       return;
     }
+    node.classList.add('reveal-ready');
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
